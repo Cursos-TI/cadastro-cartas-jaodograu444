@@ -8,13 +8,26 @@ int main()
 {
   // Área para definição das variáveis para armazenar as propriedades das cidades
   char letra1, letra2;
-  char codigo1[4], codigo2[4], NomeDaCidade1[20], NomeDoEstado2[20];
+  char codigo1[3], codigo2[3], NomeDaCidade1[20], NomeDoEstado2[20];
   int populacao1, populacao2;
   float AreaEmKm2_1, AreaEmKm2_2;
   float PIB1, PIB2;
   int PontosTuristicos1, PontosTuristicos2;
   float PIBCAPITA1, PIBCAPITA2;
   float Densidade1, Densidade2;
+  float SuperPoder1;
+  float SuperPoder2;
+  float inversoDensidade1;
+  float inversoDensidade2;
+  int resultadoP1_P2;
+  int resultadoA1_A2;
+  int resultadoPIB1_PIB2;
+  int resultadoPT1_PT2;
+  int resultadoDP1_DP2;
+  int resultadoPC1_PC2;
+  int resultadoS1_S2;
+
+
   // Área para entrada de dados
   printf("Digite uma letra de 'A' a 'H' para representar um Estado 1:\n");
   scanf(" %c", &letra1);
@@ -37,8 +50,6 @@ int main()
   printf("Digite o número de pontos turísticos da cidade 1:\n");
   scanf(" %d", &PontosTuristicos1);
 
-  Densidade1 = (populacao1 / AreaEmKm2_1);
-  PIBCAPITA1 = (PIB1 / populacao1);
 
   // Segunda cidade//
   printf("Digite uma letra de 'A' a 'H' para representar um Estado 2:\n");
@@ -62,8 +73,21 @@ int main()
   printf("Digite o número de pontos turísticos da cidade 2:\n");
   scanf(" %d", &PontosTuristicos2);
 
+  Densidade1 = (populacao1 / AreaEmKm2_1);
+  PIBCAPITA1 = (PIB1 / populacao1);
   Densidade2 = (populacao2 / AreaEmKm2_2);
   PIBCAPITA2 = (PIB2 / populacao2);
+  inversoDensidade1 = (1 / Densidade1);
+  inversoDensidade2 = (1 / Densidade2);
+  SuperPoder1 = (populacao1 + AreaEmKm2_1 + PIB1 + PontosTuristicos1 + PIBCAPITA1 + inversoDensidade1);
+  SuperPoder2 = (populacao2 + AreaEmKm2_2 + PIB2 + PontosTuristicos2 + PIBCAPITA2 + inversoDensidade2);
+  resultadoP1_P2 = (populacao1 > populacao2);
+  resultadoA1_A2 = (AreaEmKm2_1 > AreaEmKm2_2);
+  resultadoPIB1_PIB2 = (PIB1 > PIB2);
+  resultadoPT1_PT2 = (PontosTuristicos1 > PontosTuristicos2);
+  resultadoDP1_DP2 = (Densidade1 < Densidade2);
+  resultadoPC1_PC2 = (PIBCAPITA1 > PIBCAPITA2);
+  resultadoS1_S2 = (SuperPoder1 > SuperPoder2);
 
   // Área para exibição dos dados da cidade
   printf("Carta 1:\n");
@@ -87,6 +111,16 @@ int main()
   printf("Pontos turísticos da cidade 2: %d\n", PontosTuristicos2);
   printf("Densidade Populacional 2: %.2f\n", Densidade2);
   printf("PIB per Capita 2: %.2f\n", PIBCAPITA2);
+
+  printf("Resultado das Comparações\n");
+  printf("População: %s (%d)\n",resultadoP1_P2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoP1_P2);
+  printf("Área: %s (%d)\n",resultadoA1_A2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoA1_A2);
+  printf("PIB: %s (%d)\n",resultadoPIB1_PIB2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoPIB1_PIB2);
+  printf("Pontos Turísticos: %s (%d)\n",resultadoPT1_PT2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoPT1_PT2);
+  printf("Densidade Populacional: %s (%d)\n",resultadoDP1_DP2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoDP1_DP2);
+  printf("PIB per Capita: %s (%d)\n",resultadoPC1_PC2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoPC1_PC2);
+  printf("Super Poder: %s (%d)\n",resultadoS1_S2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoS1_S2);
+
 
   return 0;
 }

@@ -8,7 +8,7 @@ int main()
 {
   // Área para definição das variáveis para armazenar as propriedades das cidades
   char letra1, letra2;
-  char codigo1[3], codigo2[3], NomeDaCidade1[20], NomeDoEstado2[20];
+  char codigo1[4], codigo2[4], NomeDaCidade1[20], NomeDoEstado2[20];
   int populacao1, populacao2;
   float AreaEmKm2_1, AreaEmKm2_2;
   float PIB1, PIB2;
@@ -26,7 +26,6 @@ int main()
   int resultadoDP1_DP2;
   int resultadoPC1_PC2;
   int resultadoS1_S2;
-
 
   // Área para entrada de dados
   printf("Digite uma letra de 'A' a 'H' para representar um Estado 1:\n");
@@ -50,7 +49,6 @@ int main()
   printf("Digite o número de pontos turísticos da cidade 1:\n");
   scanf(" %d", &PontosTuristicos1);
 
-
   // Segunda cidade//
   printf("Digite uma letra de 'A' a 'H' para representar um Estado 2:\n");
   scanf(" %c", &letra2);
@@ -72,7 +70,7 @@ int main()
 
   printf("Digite o número de pontos turísticos da cidade 2:\n");
   scanf(" %d", &PontosTuristicos2);
-
+  // Calculos e resultados das cartas//
   Densidade1 = (populacao1 / AreaEmKm2_1);
   PIBCAPITA1 = (PIB1 / populacao1);
   Densidade2 = (populacao2 / AreaEmKm2_2);
@@ -88,8 +86,9 @@ int main()
   resultadoDP1_DP2 = (Densidade1 < Densidade2);
   resultadoPC1_PC2 = (PIBCAPITA1 > PIBCAPITA2);
   resultadoS1_S2 = (SuperPoder1 > SuperPoder2);
+  
 
-  // Área para exibição dos dados da cidade
+  // Área para exibição dos dados da cidade 1 //
   printf("Carta 1:\n");
   printf("Estado 1: %c\n", letra1);
   printf("Codigo 1: %s\n", codigo1);
@@ -100,7 +99,7 @@ int main()
   printf("Pontos turísticos da cidade 1: %d\n", PontosTuristicos1);
   printf("Densidade Populacional 1: %.2f\n", Densidade1);
   printf("PIB per Capita 1: %.2f\n", PIBCAPITA1);
-
+  // Área para exibição dos dados da cidade 2 //
   printf("Carta 2:\n");
   printf("Estado 2: %c\n", letra2);
   printf("Codigo 2: %s\n", codigo2);
@@ -111,16 +110,28 @@ int main()
   printf("Pontos turísticos da cidade 2: %d\n", PontosTuristicos2);
   printf("Densidade Populacional 2: %.2f\n", Densidade2);
   printf("PIB per Capita 2: %.2f\n", PIBCAPITA2);
-
+  // comparação entre as duas cartas//
   printf("Resultado das Comparações\n");
-  printf("População: %s (%d)\n",resultadoP1_P2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoP1_P2);
-  printf("Área: %s (%d)\n",resultadoA1_A2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoA1_A2);
-  printf("PIB: %s (%d)\n",resultadoPIB1_PIB2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoPIB1_PIB2);
-  printf("Pontos Turísticos: %s (%d)\n",resultadoPT1_PT2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoPT1_PT2);
-  printf("Densidade Populacional: %s (%d)\n",resultadoDP1_DP2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoDP1_DP2);
-  printf("PIB per Capita: %s (%d)\n",resultadoPC1_PC2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoPC1_PC2);
-  printf("Super Poder: %s (%d)\n",resultadoS1_S2 ? "Carta 1 venceu" : "Carta 2 venceu",resultadoS1_S2);
+  printf("População: %s (%d)\n", resultadoP1_P2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoP1_P2);
+  printf("Área: %s (%d)\n", resultadoA1_A2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoA1_A2);
+  printf("PIB: %s (%d)\n", resultadoPIB1_PIB2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoPIB1_PIB2);
+  printf("Pontos Turísticos: %s (%d)\n", resultadoPT1_PT2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoPT1_PT2);
+  printf("Densidade Populacional: %s (%d)\n", resultadoDP1_DP2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoDP1_DP2);
+  printf("PIB per Capita: %s (%d)\n", resultadoPC1_PC2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoPC1_PC2);
+  printf("Super Poder: %s (%d)\n", resultadoS1_S2 ? "Carta 1 venceu" : "Carta 2 venceu", resultadoS1_S2);
 
+  // comparação das cartas, atributo: População//
+  printf("Comparação de cartas (Atributo: População):\n");
+  printf("Carta 1 - %s: %d\n", NomeDaCidade1, populacao1);
+  printf("Carta 2 - %s: %d\n", NomeDoEstado2, populacao2);
+  if (populacao1 > populacao2)
+  {
+    printf("Resultado: Carta 1 (%s) venceu", NomeDaCidade1);
+  }
+  else
+  {
+    printf("Resultado: Carta 2 (%s) venceu", NomeDoEstado2);
+  }
 
   return 0;
 }
